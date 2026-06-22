@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_USER  = "your-dockerhub-username"
+        DOCKERHUB_USER  = "akila280197"
         IMAGE_NAME      = "hello-world-devops"
         IMAGE_TAG       = "${env.BUILD_NUMBER}"
         FULL_IMAGE      = "${DOCKERHUB_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
