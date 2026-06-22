@@ -43,24 +43,24 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
-            steps {
-                echo "========== STAGE 4: SonarQube Analysis =========="
-                withCredentials([string(
-                    credentialsId: 'sonar-token',
-                    variable: 'SONAR_TOKEN'
-                )]) {
-                    sh '''
-                        sonar-scanner \
-                          -Dsonar.projectKey=hello-world-devops \
-                          -Dsonar.sources=. \
-                          -Dsonar.host.url=${SONAR_URL} \
-                          -Dsonar.token=${SONAR_TOKEN}
-                    '''
-                }
-                echo "SonarQube analysis completed ✅"
-            }
+     stage('SonarQube Analysis') {
+    steps {
+        echo "========== STAGE 4: SonarQube Analysis =========="
+        withCredentials([string(
+            credentialsId: 'sonar-token',
+            variable: 'SONAR_TOKEN'
+        )]) {
+            sh """
+                /opt/sonar-scanner/bin/sonar-scanner \
+                  -Dsonar.projectKey=hello-world-devops \
+                  -Dsonar.sources=. \
+                  -Dsonar.host.url=${SONAR_URL} \
+                  -Dsonar.token=${SONAR_TOKEN}
+            """
         }
+        echo "SonarQube analysis completed ✅"
+    }
+}
 
         stage('Build Docker Image') {
             steps {
