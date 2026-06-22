@@ -8,7 +8,7 @@ pipeline {
         FULL_IMAGE      = "${DOCKERHUB_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
         CONTAINER_NAME  = "hello-world-app"
         APP_PORT        = "8081"
-        SONAR_URL       = "http://100.31.90.48/:9000"
+        SONAR_URL       = "http://localhost:9000"
     }
 
     stages {
